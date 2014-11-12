@@ -1,0 +1,310 @@
+snippet #!
+	#!/usr/bin/python
+
+snippet openerp
+	# -*- coding: utf-8 -*-                                                            
+	##############################################################################  
+	#                                                                                  
+	#    OpenERP, Open Source Management Solution                                      
+	#    Copyright (C) 2004-2010 Tiny SPRL (<http://tiny.be>).                         
+	#                                                                                  
+	#    This program is free software: you can redistribute it and/or modify          
+	#    it under the terms of the GNU Affero General Public License as                
+	#    published by the Free Software Foundation, either version 3 of the            
+	#    License, or (at your option) any later version.                               
+	#                                                                                  
+	#    This program is distributed in the hope that it will be useful,               
+	#    but WITHOUT ANY WARRANTY; without even the implied warranty of                
+	#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                 
+	#    GNU Affero General Public License for more details.                           
+	#                                                                                  
+	#    You should have received a copy of the GNU Affero General Public License   
+	#    along with this program.  If not, see <http://www.gnu.org/licenses/>.         
+	#                                                                                  
+	##############################################################################  
+	{                                                                                  
+		'name' : '',                                                                   
+		'version' : '0.1',                                                             
+		'author' : 'Vauxoo',                                                      
+		'category' : '',                                                          
+		'description' : """                                                            
+																					   
+		""",                                                                           
+		'website': 'http://www.vauxoo.com',                                            
+		'images' : [],                                                                 
+		'depends' : [
+		],                                                                
+		'data': [                                                                      
+		],                                                                                 
+		'js': [                                                                        
+		],                                                                                 
+		'qweb' : [                                                                     
+		],                                                                                 
+		'css':[                                                                        
+		],                                                                                 
+		'demo': [                                                                      
+		],                                                                                 
+		'test': [                                                                      
+		],                                                                                                                                                                                                  
+		'installable': True,                                                           
+		'auto_install': False,                                                         
+	}                                                                                  
+	# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4: 
+
+snippet imp
+	import ${1:module}
+# Module Docstring
+snippet docs
+	'''
+	File: ${1:`Filename('$1.py', 'foo.py')`}
+	Author: ${2:`g:snips_author`}
+	Description: ${3}
+	'''
+snippet wh
+	while ${1:condition}:
+		${2:# code...}
+snippet for
+	for ${1:needle} in ${2:haystack}:
+		algo.$1 = $2
+
+# New Class
+snippet cl
+	class ${1:ClassName}(${2:object}):
+		"""${3:docstring for $1}"""
+		def __init__(self, ${4:arg}):
+			${5:super($1, self).__init__()}
+			self.$4 = $4
+			${6}
+# New Function
+snippet defff
+	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+		"""${3:docstring for $1}"""
+		${4:pass}
+snippet defffff
+	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+		${3}
+# New Method
+snippet defs
+	def ${1:mname}(self, ${2:arg}):
+		${3:pass}
+# Lambda
+snippet ld
+	${1:var} = lambda ${2:vars} : ${3:action}
+snippet .
+	self.
+snippet try Try/Except
+	try:
+		${1:pass}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+snippet try Try/Except/Else
+	try:
+		${1:pass}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	else:
+		${5:pass}
+snippet try Try/Except/Finally
+	try:
+		${1:pass}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	finally:
+		${5:pass}
+snippet try Try/Except/Else/Finally
+	try:
+		${1:pass}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	else:
+		${5:pass}
+	finally:
+		${6:pass}
+# if __name__ == '__main__':
+snippet ifmain
+	if __name__ == '__main__':
+		${1:main()}
+# __magic__
+snippet _
+	__${1:init}__${2}
+
+snippet class
+	class ${1:class_name}(osv.Model):
+		
+		'''${2:description}'''
+		
+		_name = '${3:class.name}'
+		
+		_columns = {${4:columns}}
+
+snippet classw
+	class ${1:class_name}(osv.TransientModel):
+		
+		'''${2:description}'''
+		
+		_name = '${3:class.name}'
+		
+		_columns = {${4:columns}}
+
+snippet classi
+	class ${1:class_name}(osv.Model):
+		
+		'''${2:description}'''
+		
+		_inherit = '${3:inherit.model}'
+		
+		_columns = {${4:columns}}
+	
+	$1()
+
+
+snippet classid
+	class ${1:class_name}(osv.Model):
+		
+		'''${2:description}'''
+		
+		_name = '${3:new.name}'
+
+		_inherit = '${4:inherit.model}'
+		
+		_columns = {${5:columns}}
+
+snippet classip
+	class ${1:class_name}(osv.Model):
+		
+		'''${2:description}'''
+		
+		_name = '${3:new.name}'
+
+		_inherits = {${4:inherit.model}}
+		
+		_columns = {${5:columns}}
+	
+snippet browse
+	browse(cr, uid, ${1:id or list ids}, context=context)
+
+snippet super
+	super(${1:class_definition},self).
+
+snippet create
+	create(cr, uid, {${1:field to create record}}, context=context)
+
+snippet boolean
+	'${1:name}':fields.boolean('${2:string}', help='${3:fields help}'), 
+
+snippet char
+	'${1:name}':fields.char('${2:string}', ${3:long}, help='${4:fields help}'), 
+
+snippet date
+	'${1:name}':fields.date('${2:string}', help='${3:fields help}), 
+
+snippet dt
+	'${1:name}':fields.datetime('${2:string}', help='${3:fields help}), 
+
+snippet def
+	def ${1:method_name}(self, cr, uid, ids, ${2:values}, context=None):
+	    if context is None:
+			context = {}
+
+		return
+
+snippet default_get
+	def default_get(self, cr, uid, fields, context=None):
+		'''${1:description}''''
+		if context is None:
+			context = {}
+
+		res = super(${2:name class}, self).default_get(cr, uid, fields, context=context)
+
+
+		return res
+
+snippet float
+	'${1:name}':fields.float('${2:string}', help='${3:fields help}'), 
+
+snippet function
+	'${1:name}':fields.function(${2:method name}, method=True, store=${3:True or False}, fnct_inv=${4:method to write this field or None}, fnct_search=${5:method to use this field as a search (if store = False) or None}, '${6:string}', help='${7:fields help}'), 
+
+snippet int
+	'${1:name}':fields.integer('${2:string}', help='${3:fields help}'), 
+
+snippet m2m
+	'${1:name}':fields.many2many('${2:relation model}', '${3:relation tab to create}', '${4:name of the field containing the id of the current model}', '${5:name of the field containing the id of the relation model}', '${6:string}', help='${7:fields help}'), 
+
+snippet m2o
+	'${1:name}':fields.many2one('${2:model reference}', '${3:string}', help='${4:fields help}'), 
+
+snippet o2m
+	'${1:name}':fields.one2many('${2:model reference}', '${3:m2o reference}', '${4:string}', help='${5:fields help}'), 
+
+snippet oerpconec
+	HOST='${1:ip address to connect}'
+	PORT=${2:net-rpc port}
+	DB='${3:data base name}'
+	USER='${4:user name}'
+	PASS='${5:user password }'
+
+	con = oerplib.OERP(
+	server=HOST, 
+	database=DB, 
+	port=PORT, 
+	)  
+
+	con.login(USER, PASS)
+
+snippet pool
+	self.pool.get('${1:model}')
+
+snippet read
+	read(cr, uid, ${1:id or ids list}, [${2:optional field to read}], context=context)
+
+snippet one4m
+	'${1:name}':fields.one4many('${2:relation model}', '${3:field many4one related with my model in the relation model}', '${4:string}', help='${5:fields help}'), 
+
+snippet property
+	'${1:name}':fields.property('${2:relation model}', string='${3:String}', type='${4:field type}', help='${5:fields help}'), 
+
+snippet reference
+	'${1:name}':fields.reference('${2:string}', [${3:tuples with model and string}], help='${4:field's help}'), 
+
+snippet related
+	'${1:name}':fields.related('${2:field name many2one}', '${3:field name in the other model which we want to know value}', '${4:string}', help='${5:fields help}'), 
+
+snippet selection
+	'${1:name}':fields.selection([(${2:tuple options})], help='${3:fields help}'), 
+
+snippet search
+	search(cr, uid, [(${1:tuple with search parameters})], context=context)
+
+snippet unlink
+	unlink(cr, uid, ${1:ids list}, context=context)
+
+snippet write
+	write(cr, uid, ${1:ids list always a list}, {${2:fields to update}}, context=context)
+
+snippet raisex
+	raise osv.except_osv(_('${1:title}'), _('${2:message}'))
+snippet copyright
+	#!/usr/bin/python                                                               
+	# -*- encoding: utf-8 -*-                                                       
+	############################################################################### 
+	#    Module Writen to OpenERP, Open Source Management Solution
+	#    Copyright (C) Vauxoo (<http://vauxoo.com>).
+	#    All Rights Reserved                                                        
+	################# Credits###################################################### 
+	#    Coded by: ${1: Programmer Name } <${2: Programmer E-mail }>                                   
+	#    Audited by: ${3: Auditor Name } <${4: Auditor E-Mail } >                             
+	############################################################################### 
+	#    This program is free software: you can redistribute it and/or modify       
+	#    it under the terms of the GNU Affero General Public License as published   
+	#    by the Free Software Foundation, either version 3 of the License, or       
+	#    (at your option) any later version.                                        
+	#                                                                               
+	#    This program is distributed in the hope that it will be useful,            
+	#    but WITHOUT ANY WARRANTY; without even the implied warranty of             
+	#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              
+	#    GNU Affero General Public License for more details.                        
+	#                                                                               
+	#    You should have received a copy of the GNU Affero General Public License   
+	#    along with this program.  If not, see <http://www.gnu.org/licenses/>.      
+	###############################################################################	
